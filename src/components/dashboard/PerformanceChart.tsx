@@ -1,9 +1,20 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { performanceChartData } from '@/lib/dummy-data';
+
+const chartConfig = {
+  '지점 A': {
+    label: '지점 A',
+    color: 'hsl(var(--primary))',
+  },
+  '지점 B': {
+    label: '지점 B',
+    color: 'hsl(var(--accent))',
+  },
+};
 
 export function PerformanceChart() {
   return (
@@ -13,8 +24,8 @@ export function PerformanceChart() {
         <CardDescription>지난 6개월간의 평균 성적 추이입니다.</CardDescription>
       </CardHeader>
       <CardContent className="pl-2">
-        <ResponsiveContainer width="100%" height={350}>
-          <BarChart data={performanceChartData}>
+        <ChartContainer config={chartConfig} className="min-h-[350px] w-full">
+          <BarChart data={performanceChartData} accessibilityLayer>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
@@ -31,14 +42,14 @@ export function PerformanceChart() {
                 axisLine={false}
                 tickMargin={10}
             />
-            <Tooltip
+            <ChartTooltip
               cursor={{ fill: 'hsl(var(--muted))' }}
               content={<ChartTooltipContent />}
             />
-            <Bar dataKey="지점 A" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="지점 B" fill="hsl(var(--accent))" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="지점 A" fill="var(--color-지점 A)" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="지점 B" fill="var(--color-지점 B)" radius={[4, 4, 0, 0]} />
           </BarChart>
-        </ResponsiveContainer>
+        </ChartContainer>
       </CardContent>
     </Card>
   );
