@@ -51,27 +51,28 @@ export function AppSidebar() {
       <SidebarMenu className="flex-1">
         {menuItems.map((item) => (
           <SidebarMenuItem key={item.href}>
-            <Link href={item.href} legacyBehavior passHref>
-              <SidebarMenuButton
-                isActive={pathname.startsWith(item.href)}
-                tooltip={{ children: item.label }}
-              >
+            <SidebarMenuButton
+              asChild
+              isActive={pathname.startsWith(item.href)}
+              tooltip={{ children: item.label }}
+            >
+              <Link href={item.href}>
                 <item.icon />
                 <span>{item.label}</span>
-              </SidebarMenuButton>
-            </Link>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
       </SidebarMenu>
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/login" legacyBehavior passHref>
-              <SidebarMenuButton tooltip={{ children: '로그아웃' }}>
+            <SidebarMenuButton asChild tooltip={{ children: '로그아웃' }}>
+              <Link href="/login">
                 <LogOut />
                 <span>로그아웃</span>
-              </SidebarMenuButton>
-            </Link>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
