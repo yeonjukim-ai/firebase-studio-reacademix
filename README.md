@@ -1,3 +1,6 @@
+## About this project
+This project is used for AI-assisted coding practice with Cursor and GitHub.
+
 # ReAcademix
 
 학원 관리 시스템을 위한 통합 대시보드 및 리포트 생성 플랫폼입니다. Firebase Studio와 Next.js를 기반으로 구축되었으며, 학생 데이터 관리, 자동화된 리포트 생성, AI 기반 데이터 검증 등의 기능을 제공합니다.
