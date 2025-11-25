@@ -1,3 +1,35 @@
+/**
+ * @fileoverview ReportsPage - 리포트 관리 페이지
+ * 
+ * 역할:
+ * - 리포트 생성, 생성 이력, 전송 이력을 관리하는 페이지
+ * - Tabs 컴포넌트를 사용하여 3개의 탭으로 구성
+ * 
+ * Props 구조:
+ * - Props 없음 (서버 컴포넌트)
+ * 
+ * 데이터 흐름:
+ * - reportHistory (dummy-data) → HistoryTable (type="generation")
+ * - transmissionHistory (dummy-data) → HistoryTable (type="transmission")
+ * - ReportGeneration: 내부에서 필요한 상태를 hook으로 관리
+ * 
+ * 이벤트 흐름:
+ * - 탭 전환 → Tabs 컴포넌트가 내부적으로 처리
+ * - "리포트 생성" 탭: ReportGeneration 컴포넌트의 이벤트 처리
+ * - "생성 이력" 탭: HistoryTable 컴포넌트의 이벤트 처리
+ * - "전송 이력" 탭: HistoryTable 컴포넌트의 이벤트 처리
+ * 
+ * 컴포넌트 구조:
+ * - PageHeader: 페이지 제목과 설명
+ * - Tabs: 3개의 탭 (리포트 생성, 생성 이력, 전송 이력)
+ *   - TabsContent "generate": ReportGeneration 컴포넌트
+ *   - TabsContent "generation-history": HistoryTable (type="generation")
+ *   - TabsContent "transmission-history": HistoryTable (type="transmission")
+ * 
+ * 사용 예시:
+ * - /dashboard/reports 경로로 접근 시 자동으로 렌더링됨
+ */
+
 import { PageHeader } from "@/components/shared/PageHeader";
 import {
   Tabs,
