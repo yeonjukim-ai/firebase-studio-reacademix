@@ -1,0 +1,98 @@
+---
+alwaysApply: true
+---
+
+# Project Overview (000)
+
+## 1. Context
+
+This repository is used in the **“AI 활용 서비스 기획 & 개발 전문가 과정”** to practice:
+
+- Rapid prototyping of web UIs with AI agents (Cursor, etc.)
+- Refactoring AI-generated prototypes into readable, maintainable code
+- Applying Git + GitHub issue–driven development in a realistic workflow
+
+The project is primarily a **frontend practice project**, not a full production system.
+
+---
+
+## 2. Goal of this project
+
+The main goals of this project are:
+
+1. Turn the initial prototype UI into a more stable and clean implementation.
+2. Improve UX and code quality step-by-step while preserving existing behavior as much as possible.
+3. Provide a small but realistic base for experimenting with:
+   - Cursor Rules
+   - AI-assisted coding
+   - GitHub Issues / Projects / PR workflows
+
+If new features are added, they should stay small, focused, and consistent with the current UI and architecture.
+
+---
+
+## 3. Target users
+
+Conceptually, this project targets:
+
+- Planners, PMs, and developers in the **교육 / 에듀테크 / 웹 서비스** domain
+- Students of the “AI 활용 서비스 기획 & 개발 전문가 과정” who need:
+  - A sandbox to test AI-assisted coding
+  - A concrete example of how to structure a frontend project
+
+The repository itself is mainly for **internal learning and experimentation**, not public end-users.
+
+---
+
+## 4. Tech stack and priorities
+
+**Primary stack**
+
+- React (SPA framework)
+- Vite or Next.js as the build/runtime toolkit (depending on the initial template)
+- JavaScript or TypeScript (TypeScript optional)
+- CSS framework or design system used in the prototype (e.g., TailwindCSS, basic CSS modules, or similar)
+
+**Priorities**
+
+1. **Clarity over cleverness**  
+   Prefer simple, explicit solutions over overly abstract or “smart” code.
+
+2. **Small, incremental changes**  
+   Avoid large rewrites. Improve the existing structure step by step.
+
+3. **Good developer experience**  
+   - Clear folder structure  
+   - Helpful comments  
+   - Easy local setup (minimal steps to run)
+
+---
+
+## 5. Non-goals
+
+The following are *not* goals of this repository:
+
+- Building a fully polished commercial product
+- Handling extreme scale or edge-case performance
+- Implementing complex backend logic inside this frontend project
+
+These can be explored in separate repositories if needed.
+
+---
+
+## 6. How rules in this folder are used
+
+The `.cursor/rules/*.mdc` files define project-specific rules for AI agents in Cursor.
+
+- **000–099**: Project overview and meta-rules (this file).
+- **100–199**: Error handling, debugging, and build/run rules.
+- **200–299**: Git workflow, commit messages, branching, and comment style.
+- **300–399**: Stack-specific rules (e.g., React, Vite, styling conventions, testing).
+
+AI agents should:
+
+1. Read and respect this file before applying more specific rules.
+2. Combine these rules with the other `.mdc` files to guide all coding and refactoring tasks.
+3. Keep new rules consistent with the structure described above.
+
+This file defines the high-level intent of the project and should be updated if the project’s scope or stack changes.

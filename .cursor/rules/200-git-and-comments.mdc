@@ -1,0 +1,52 @@
+---
+alwaysApply: true
+---
+# Git & Comment Rules (200)
+
+## 1. Commenting New Code
+
+1. For every new file, component, or major function, add a short one-line comment at the top describing its purpose.
+   - (Write your own description based on the actual feature you’re implementing)
+
+2. Comments should be:
+   - Short and clear
+   - Focused on why and what the code is doing
+
+3. If behavior changes, update the comment accordingly.
+
+---
+
+## 2. Preserving Existing Comments
+
+1. Never delete existing comments without a reason.
+2. If a comment is outdated or incorrect, rewrite it so it matches the updated logic.
+3. For complex logic, ensure at least one clarifying comment exists.
+
+---
+
+## 3. Git Commit Message Rules
+
+1. Use clear, imperative commit messages.
+   - Examples:
+     - `feat: add login form`
+     - `fix: resolve button color mismatch`
+     - `docs: update README`
+
+2. Always include the related issue number.
+   - `(Ref #3)` 또는 `(Ref #12)` 등
+
+3. When a commit or PR completes an issue, mark it clearly:
+   - `Closes #3`
+   - `Fixes #12`
+
+---
+
+## 4. Branch Naming
+
+1. Use short, meaningful branch names.
+   - `feature/login-ui-3`
+   - `fix/navbar-layout-8`
+
+2. Use lowercase and hyphens (`-`) between words.
+
+These rules apply to all future Git workflows and code comments in this project.

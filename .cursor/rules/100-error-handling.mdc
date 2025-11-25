@@ -1,0 +1,31 @@
+---
+alwaysApply: true
+---
+# Error Handling Rules (100)
+
+When fixing any error in this project, follow these rules:
+
+1. **Write a Root-Cause Hypothesis First**
+   - Before producing any code changes, write 2–3 short paragraphs.
+   - Paragraphs must include:
+     - What is likely causing the error
+     - What evidence or file paths support this guess
+     - What you plan to verify or modify
+
+2. **Propose Minimal and Targeted Fixes**
+   - Prefer *small, surgical changes* over rewriting entire files.
+   - Preserve existing logic whenever possible.
+   - Modify only the parts necessary to resolve the issue.
+
+3. **Show Before/After Code Blocks**
+   - Provide the code snippet that is being changed.
+   - Then provide the updated version below it.
+   - Highlight what changed.
+
+4. **Never Remove Existing Comments**
+   - If a comment is wrong, update it instead of deleting it.
+
+5. **Always Explain Why the Fix Works**
+   - 2–4 sentences describing why the modification resolves the issue.
+
+This rule applies to all error fixes initiated within this project.
