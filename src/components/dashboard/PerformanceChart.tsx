@@ -40,11 +40,11 @@ import { useMemo } from 'react';
 const chartConfig = {
   '지점 A': {
     label: '지점 A',
-    color: 'hsl(var(--primary))',
+    color: 'hsl(217, 91%, 60%)', // 밝은 파란색
   },
   '지점 B': {
     label: '지점 B',
-    color: 'hsl(var(--accent))',
+    color: 'hsl(173, 80%, 40%)', // 청록색
   },
 } as const;
 
@@ -59,32 +59,32 @@ export function PerformanceChart() {
       className="col-span-1 lg:col-span-2 transition-all duration-200"
       contentClassName="pl-2 md:pl-4"
     >
-        <ChartContainer config={config} className="min-h-[350px] w-full">
-          <BarChart data={performanceChartData} accessibilityLayer>
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              tickMargin={10}
-              axisLine={false}
-              stroke="hsl(var(--muted-foreground))"
-              fontSize={12}
-            />
-            <YAxis 
-                stroke="hsl(var(--muted-foreground))"
-                fontSize={12}
-                tickLine={false}
-                axisLine={false}
-                tickMargin={10}
-            />
-            <ChartTooltip
-              cursor={{ fill: 'hsl(var(--muted))' }}
-              content={<ChartTooltipContent />}
-            />
-            <Bar dataKey="지점 A" fill="var(--color-지점 A)" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="지점 B" fill="var(--color-지점 B)" radius={[4, 4, 0, 0]} />
-          </BarChart>
-        </ChartContainer>
+      <ChartContainer config={config} className="min-h-[250px] w-full">
+        <BarChart data={performanceChartData} accessibilityLayer>
+          <CartesianGrid vertical={false} />
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            tickMargin={10}
+            axisLine={false}
+            stroke="hsl(var(--muted-foreground))"
+            fontSize={12}
+          />
+          <YAxis
+            stroke="hsl(var(--muted-foreground))"
+            fontSize={12}
+            tickLine={false}
+            axisLine={false}
+            tickMargin={10}
+          />
+          <ChartTooltip
+            cursor={{ fill: 'hsl(var(--muted))' }}
+            content={<ChartTooltipContent />}
+          />
+          <Bar dataKey="지점 A" fill="hsl(217, 91%, 60%)" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="지점 B" fill="hsl(173, 80%, 40%)" radius={[4, 4, 0, 0]} />
+        </BarChart>
+      </ChartContainer>
     </SectionCard>
   );
 }
