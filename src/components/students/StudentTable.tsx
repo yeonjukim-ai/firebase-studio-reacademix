@@ -34,16 +34,18 @@ export function StudentTable({ students, onSelectStudent }: StudentTableProps) {
     return (
         <div className="rounded-lg border overflow-hidden shadow-sm">
             <div className="overflow-x-auto">
-                <Table>
+                <Table aria-label="학생 목록 테이블">
                     <TableHeader>
                         <TableRow>
-                            <TableHead>이름</TableHead>
-                            <TableHead>지점</TableHead>
-                            <TableHead>반</TableHead>
-                            <TableHead>상태</TableHead>
-                            <TableHead>등록일</TableHead>
-                            <TableHead>최종 리포트일</TableHead>
-                            <TableHead></TableHead>
+                            <TableHead scope="col">이름</TableHead>
+                            <TableHead scope="col">지점</TableHead>
+                            <TableHead scope="col">반</TableHead>
+                            <TableHead scope="col">상태</TableHead>
+                            <TableHead scope="col">등록일</TableHead>
+                            <TableHead scope="col">최종 리포트일</TableHead>
+                            <TableHead scope="col">
+                                <span className="sr-only">작업</span>
+                            </TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -62,6 +64,7 @@ export function StudentTable({ students, onSelectStudent }: StudentTableProps) {
                                                     : "secondary"
                                         }
                                         className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 data-[state=inactive]:bg-red-100 data-[state=inactive]:text-red-800"
+                                        aria-label={`상태: ${student.status}`}
                                     >
                                         {student.status}
                                     </Badge>
@@ -74,6 +77,7 @@ export function StudentTable({ students, onSelectStudent }: StudentTableProps) {
                                         size="sm"
                                         onClick={() => onSelectStudent(student)}
                                         className="transition-all duration-200 hover:scale-105 active:scale-95"
+                                        aria-label={`${student.name} 학생 상세 보기`}
                                     >
                                         상세 보기
                                     </Button>

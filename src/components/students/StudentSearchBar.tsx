@@ -23,13 +23,18 @@ interface StudentSearchBarProps {
 
 export function StudentSearchBar({ searchTerm, onSearchChange }: StudentSearchBarProps) {
   return (
-    <div className="relative flex-1 w-full sm:w-auto">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground transition-colors duration-200" />
+    <div className="relative flex-1 w-full sm:w-auto" role="search">
+      <Search
+        className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground transition-colors duration-200"
+        aria-hidden="true"
+      />
       <Input
+        type="search"
         placeholder="학생 이름, 반, ID로 검색..."
         className="pl-9 transition-all duration-200 focus:ring-2 focus:ring-primary/20 focus:border-primary/50"
         value={searchTerm}
         onChange={(e) => onSearchChange(e.target.value)}
+        aria-label="학생 검색"
       />
     </div>
   );
