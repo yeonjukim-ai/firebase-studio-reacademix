@@ -3,6 +3,7 @@ import { useToast } from '@/hooks/use-toast';
 import { validateUploadedData } from '@/ai/flows/validate-uploaded-data';
 import type { ValidateUploadedDataOutput } from '@/ai/flows/validate-uploaded-data';
 import { sampleDataForValidation } from '@/lib/dummy-data';
+import { handleError } from '@/lib/utils/error-handler';
 
 type State = 'idle' | 'file_selected' | 'validating' | 'validation_complete';
 
@@ -17,7 +18,7 @@ export function useDataValidation() {
   const [validationResult, setValidationResult] = useState<ValidateUploadedDataOutput | null>(null);
   const [editableData, setEditableData] = useState<string[][]>([]);
   const { toast } = useToast();
-  
+
   // timeout을 ref로 관리하여 cleanup 가능하게 함
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -80,14 +81,14 @@ export function useDataValidation() {
   // 데이터 검증 핸들러
   const handleValidate = useCallback(async () => {
     if (!file) return;
-    
+
     setState('validating');
-    
+
     // 기존 timeout 정리
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    
+
     // Simulate API call
     timeoutRef.current = setTimeout(async () => {
       try {
@@ -96,12 +97,12 @@ export function useDataValidation() {
         // For this prototype, we use dummy data to trigger validation errors.
         const dummyFile = new File([sampleDataForValidation], "sample.csv", { type: "text/csv" });
         const dataUri = await fileToDataUri(dummyFile);
-        
+
         const result = await validateUploadedData({
           fileDataUri: dataUri,
           fileType: 'CSV',
         });
-        
+
         setValidationResult(result);
         if (!result.isValid) {
           const csvData = dataUriToCsv(dataUri);
@@ -109,10 +110,15 @@ export function useDataValidation() {
         }
         setState('validation_complete');
       } catch (error) {
-        console.error("Validation failed:", error);
+        const errorInfo = handleError(error, {
+          component: 'useDataValidation',
+          action: 'validate',
+          fileName: file.name,
+        });
+
         toast({
-          title: "검증 실패",
-          description: "AI 데이터 검증 중 오류가 발생했습니다.",
+          title: errorInfo.title,
+          description: errorInfo.message,
           variant: "destructive",
         });
         setState('file_selected');
@@ -136,7 +142,7 @@ export function useDataValidation() {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
-    
+
     setFile(null);
     setState('idle');
     setValidationResult(null);
