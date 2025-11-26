@@ -46,14 +46,17 @@ export function StudentFilterMenu({
     onStatusChange,
     onBranchChange,
 }: StudentFilterMenuProps) {
+    const activeFiltersCount = statusFilter.length + branchFilter.length;
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button
                     variant="outline"
                     className="transition-all duration-200 hover:scale-105 active:scale-95"
+                    aria-label={`필터 설정 ${activeFiltersCount > 0 ? `(${activeFiltersCount}개 활성)` : ''}`}
                 >
-                    <Filter className="mr-2 h-4 w-4" />
+                    <Filter className="mr-2 h-4 w-4" aria-hidden="true" />
                     필터
                 </Button>
             </DropdownMenuTrigger>
